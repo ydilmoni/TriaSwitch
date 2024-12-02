@@ -1,17 +1,25 @@
 using UnityEngine;
 
-public class Follow : MonoBehaviour
+public class Follower : MonoBehaviour
 {
-    public Transform target; // Assign your player here in the Inspector
-    public float smoothSpeed = 0.125f; // Adjust for smoother camera motion
-    public Vector3 offset; // Use this to define the desired camera position relative to the player
+    // Target to follow (usually the player)
+    [Tooltip("Assign your player here in the Inspector")]
+    public Transform target;
+    // Speed of the camera movement
+    [Tooltip("Adjust for smoother camera motion")]
+    public float smoothSpeed = 0.125f;
+    // Offset for the camera position relative to the player
+    [Tooltip("Define the desired camera position relative to the player")]
+    public Vector3 offset;
 
     void LateUpdate()
     {
+        // Check if the target is assigned
         if (target != null)
         {
-            // Follow the player's position while maintaining the offset
+            // Calculate the desired position based on the target's position and the offset
             Vector3 desiredPosition = target.position + offset;
+            // Smoothly interpolate to the desired position
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothedPosition;
 

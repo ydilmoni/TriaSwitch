@@ -5,7 +5,7 @@ public class RestartButton : MonoBehaviour
 {
     public void RestartGame()
     {
-        // טוען מחדש את הסצנה הנוכחית
+        Time.timeScale =1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

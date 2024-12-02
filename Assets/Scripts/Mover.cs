@@ -30,13 +30,12 @@ public class Mover : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
     }
 
-
     string currentGroundTag = "Red";
     string bottomTringle = "Red";
 
     public bool CanMove(){
        
-        return bottomTringle == currentGroundTag;
+        return (bottomTringle == currentGroundTag || currentGroundTag == "Joker");
     }
     private void OnEnable()
     {
@@ -55,34 +54,16 @@ public class Mover : MonoBehaviour
     }
     private void Update()
     {
-        // currentAngle = transform.eulerAngles.z;
-        // if (currentAngle>startRedAngle && currentAngle<endRedAngle){
-        //     bottomTringle = "Red";
-        // }
-        // else if (currentAngle>startGreenAngle && currentAngle<endGreenAngle){
-        //     bottomTringle = "Green";
-        // }
-        // else if (currentAngle>startBlueAngle && currentAngle<endBlueAngle){
-        //     bottomTringle = "Blue";
-        // }
         if(CanMove()){
             if (moveRight.IsPressed())
             {
-                // Debug.Log("Moving right");
+                
                 transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
             }
             if (moveLeft.IsPressed())
             {
-                // Debug.Log("Moving left");
-                transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
-            }
-            if (moveUp.IsPressed()&&jumpCounter<=maxjump)
-            {
-                // Debug.Log("Moving up");
-                // transform.position += new Vector3(0, speed * Time.deltaTime, 0);
-                rb.AddForce(new Vector2(0, speed * jumpForce));
-                jumpCounter++;
                 
+                transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
             }
             if (moveDown.IsPressed())
             {
@@ -90,6 +71,12 @@ public class Mover : MonoBehaviour
                 transform.position += new Vector3(0, -speed * Time.deltaTime, 0);
             }
         }
+        if (moveUp.IsPressed()&&jumpCounter<=maxjump)
+            {
+                rb.AddForce(new Vector2(0, speed * jumpForce));
+                jumpCounter++;
+                
+            }
     }
     void OnCollisionEnter2D(Collision2D collision){
         Debug.Log("Collided with: " + collision.gameObject.tag);
@@ -109,7 +96,7 @@ public class Mover : MonoBehaviour
             bottomTringle = "Blue";
             Debug.Log("Bottom triangle is Blue");
         }
-         Debug.Log($"Can move?: {bottomTringle == currentGroundTag} Because bottomTringle is {bottomTringle} and currentGroundTag is {currentGroundTag}");
+         Debug.Log($"Can move?: {(bottomTringle == currentGroundTag)||currentGroundTag == "Joker"} Because bottomTringle is {bottomTringle} and currentGroundTag is {currentGroundTag}");
     }
     void OnCollisionStay2D(Collision2D collision){
         

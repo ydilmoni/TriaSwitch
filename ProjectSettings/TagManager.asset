@@ -8,9 +8,7 @@ TagManager:
   - Red
   - Green
   - Blue
-  - Yellow
-  - Pink
-  - Orange
+  - Joker
   layers:
   - Default
   - TransparentFX
