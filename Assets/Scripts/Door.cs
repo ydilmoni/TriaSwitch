@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
 
       void Start()
     {
+        winText.gameObject.SetActive(false);
+
         if (doorText != null)
         {
             doorText.text = "Find the key to open the door.";

@@ -78,6 +78,7 @@ public class Mover : MonoBehaviour
                 
             }
     }
+    
     void OnCollisionEnter2D(Collision2D collision){
         Debug.Log("Collided with: " + collision.gameObject.tag);
         currentGroundTag = collision.gameObject.tag;
