@@ -23,8 +23,7 @@ public class Mover : MonoBehaviour
     [Tooltip("How many meters per second to move when action is pressed")]
     private float speed = 7, jumpForce = 15f, maxjump = 3;
 
-    private Rigidbody2D rb; 
-
+    private Rigidbody2D rb;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +53,7 @@ public class Mover : MonoBehaviour
     }
     private void Update()
     {
-        if (CanMove() )
+        if (CanMove())
         {
             if (moveRight.IsPressed())
             {
@@ -98,13 +97,12 @@ public class Mover : MonoBehaviour
             bottomTringle = "Blue";
             Debug.Log("Bottom triangle is Blue");
         }
-         Debug.Log($"Can move?: {(bottomTringle == currentGroundTag) || currentGroundTag == "Joker"} Because bottomTringle is {bottomTringle} and currentGroundTag is {currentGroundTag}");
+        Debug.Log($"Can move?: {(bottomTringle == currentGroundTag) || currentGroundTag == "Joker"} Because bottomTringle is {bottomTringle} and currentGroundTag is {currentGroundTag}");
     }
     void OnCollisionStay2D(Collision2D collision)
     {
         string currentGroundTag = collision.gameObject.tag;
-    }
-     
+    }     
 }
 
 

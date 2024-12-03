@@ -26,8 +26,7 @@ public class Door : MonoBehaviour
     public void PlayerFoundKey()
     {
         hasKey = true;// Set hasKey to true when the player finds the key
-        Debug.Log("Player found the key!"); 
-
+        Debug.Log("Player found the key!");
         if (doorText != null)
         {
             doorText.text = "You can now open the door!";// Update the door text to inform the player
@@ -35,7 +34,7 @@ public class Door : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-           // Check if the player collides with the door and has the key
+        // Check if the player collides with the door and has the key
         if (collider.CompareTag("Player") && hasKey)
         {
             OpenDoor();
@@ -51,10 +50,10 @@ public class Door : MonoBehaviour
         Debug.Log("Door opened!");
         if (winText != null)
         {
-            winText.text = "YOU WIN!"; // Update the win text to inform the player
+            winText.text = "YOU WIN!";// Update the win text to inform the player
         }
         winText.gameObject.SetActive(true);// Show the win text
-        Time.timeScale = 0; // Pause the game
+        Time.timeScale = 0;// Pause the game
         
     }
 }

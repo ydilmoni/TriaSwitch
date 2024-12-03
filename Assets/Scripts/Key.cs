@@ -4,7 +4,7 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     // Reference to the Door that this key will unlock
-    [SerializeField] private Door door; 
+    [SerializeField] private Door door;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,9 +12,9 @@ public class Key : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Notify the door that the player has found the key
-            door.PlayerFoundKey();  
+            door.PlayerFoundKey();
             // Destroy the key object after it has been collected
-            Destroy(gameObject);   
+            Destroy(gameObject);
         }
     }
 }
