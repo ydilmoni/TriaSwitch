@@ -80,7 +80,7 @@ public class Mover : MonoBehaviour
         Debug.Log("Collided with: " + collision.gameObject.tag);
         currentGroundTag = collision.gameObject.tag;
         currentAngle = transform.eulerAngles.z;
-        jumpCounter=0;
+        jumpCounter = 0;
         Debug.Log("Current angle: " + currentAngle);
         if (currentAngle > startRedAngle && currentAngle < endRedAngle)
         {
@@ -102,7 +102,7 @@ public class Mover : MonoBehaviour
     void OnCollisionStay2D(Collision2D collision)
     {
         string currentGroundTag = collision.gameObject.tag;
-    }     
+    }
 }
 
 

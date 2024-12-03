@@ -54,6 +54,5 @@ public class Door : MonoBehaviour
         }
         winText.gameObject.SetActive(true);// Show the win text
         Time.timeScale = 0;// Pause the game
-        
     }
 }
